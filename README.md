@@ -1,3 +1,14 @@
+```bash
+✅ Successfully tested exercises/conversions/from_str.rs
+🎉 All exercises completed! 🎉
+
+We hope you enjoyed learning about the various aspects of Rust!
+If you noticed any issues, please don't hesitate to report them to our repo.
+You can also contribute your own exercises to help the greater community!
+```
+
+https://github.com/rust-lang/rustlings/blob/main/CONTRIBUTING.md
+
 ![crab pet](https://i.imgur.com/LbZJgmm.gif)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-68-orange.svg?style=flat-square)](#contributors-)
