@@ -23,19 +23,41 @@ struct Color {
 // Tuple implementation
 impl TryFrom<(i16, i16, i16)> for Color {
     type Error = String;
-    fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {}
+    fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
+        return Ok(Color {
+            red: convert(tuple.0)?,
+            green: convert(tuple.1)?,
+            blue: convert(tuple.2)?,
+        });
+
+        fn convert(val: i16) -> Result<u8, String> {
+            if let Ok(val) = u8::try_from(val) {
+                Ok(val)
+            } else {
+                Err(String::from("number must be in range [0..255]"))
+            }
+        }
+    }
 }
 
 // Array implementation
 impl TryFrom<[i16; 3]> for Color {
     type Error = String;
-    fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {}
+    fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
+        Color::try_from((arr[0], arr[1], arr[2]))
+    }
 }
 
 // Slice implementation
 impl TryFrom<&[i16]> for Color {
     type Error = String;
-    fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {}
+    fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
+        let size = slice.len();
+        if size != 3 {
+            return Err(format!("Requires 3 items but get `{}`", size));
+        }
+        Color::try_from((slice[0], slice[1], slice[2]))
+    }
 }
 
 fn main() {
